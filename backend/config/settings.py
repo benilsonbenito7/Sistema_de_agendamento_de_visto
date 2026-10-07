@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    "drf_spectacular",
     'accounts',
 ]
 
@@ -122,3 +123,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #quando o Django PERGUNTAR de usario, devemos lhe mostrar o nosso personalizado senao ele vai usar a do contrib O models.User
 AUTH_USER_MODEL = 'accounts.User'
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+}
+
+#configuracoes do drf_spectacular
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+}
+SPECTACULAR_SETTINGS = {
+    "TITLE": "VisaLink API",
+    "DESCRIPTION": "API for VisaLink visa appointment booking platform.",
+    "VERSION": "1.0.0",
+}
